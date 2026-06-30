@@ -1,0 +1,55 @@
+/* Estilos adicionais para complementar o Tailwind */
+
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.receita-card {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Badges do estoque */
+.badge-estoque {
+    background: linear-gradient(135deg, #f97316, #fb923c);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.2s;
+}
+
+.badge-estoque:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(249, 115, 22, 0.3);
+}
+
+/* Scroll suave */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Responsividade extra */
+@media (max-width: 640px) {
+    .container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+}
+
+/* Estilo para itens faltando nas receitas */
+.item-faltando {
+    color: #ef4444;
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.item-disponivel {
+    color: #22c55e;
+    font-weight: 600;
+}
