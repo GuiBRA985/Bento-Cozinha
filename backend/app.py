@@ -1,64 +1,75 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import json
 import os
 from datetime import datetime
 
-from flask import send_from_directory
-import os
-
-# Pega o diretório raiz do projeto
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-FRONTEND_DIR = os.path.join(BASE_DIR, 'frontend')
-
 app = Flask(__name__)
 CORS(app)
 
+# === NOVO: Configuração para servir o frontend ===
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+FRONTEND_DIR = os.path.join(BASE_DIR, 'frontend')
+
 # Carrega receitas do arquivo JSON
-RECEITAS_PATH = os.path.join(os.path.dirname(__file__), '..', 'data', 'receitas.json')
+RECEITAS_PATH = os.path.join(BASE_DIR, 'data', 'receitas.json')
 
 def carregar_receitas():
     with open(RECEITAS_PATH, 'r', encoding='utf-8') as f:
         return json.load(f)
 
-# Estoque em memória (para teste - depois pode usar banco)
+# Estoque em memória (para teste)
 estoque = {}
 
 # Links oficiais dos programas de ICMS por estado
 LINKS_ICMS = {
-    'AC': 'https://www.sefaz.ac.gov.br',
-    'AL': 'https://www.sefaz.al.gov.br',
-    'AP': 'https://www.sefaz.ap.gov.br',
-    'AM': 'https://www.sefaz.am.gov.br',
+    'SP': 'https://www.notafiscalpaulista.fazenda.sp.gov.br',
+    'RJ': 'https://www.fazenda.rj.gov.br',
+    'MG': 'https://www.fazenda.mg.gov.br',
+    'PR': 'https://www.fazenda.pr.gov.br',
+    'RS': 'https://www.sefaz.rs.gov.br',
+    'SC': 'https://www.sefaz.sc.gov.br',
     'BA': 'https://www.sefaz.ba.gov.br',
+    'PE': 'https://www.sefaz.pe.gov.br',
     'CE': 'https://www.sefaz.ce.gov.br',
     'DF': 'https://www.fazenda.df.gov.br',
-    'ES': 'https://www.sefaz.es.gov.br',
     'GO': 'https://www.sefaz.go.gov.br',
-    'MA': 'https://www.sefaz.ma.gov.br',
+    'ES': 'https://www.sefaz.es.gov.br',
+    'AM': 'https://www.sefaz.am.gov.br',
+    'PA': 'https://www.sefaz.pa.gov.br',
     'MT': 'https://www.sefaz.mt.gov.br',
     'MS': 'https://www.sefaz.ms.gov.br',
-    'MG': 'https://www.fazenda.mg.gov.br',
-    'PA': 'https://www.sefaz.pa.gov.br',
+    'AL': 'https://www.sefaz.al.gov.br',
+    'AP': 'https://www.sefaz.ap.gov.br',
+    'MA': 'https://www.sefaz.ma.gov.br',
     'PB': 'https://www.sefaz.pb.gov.br',
-    'PR': 'https://www.fazenda.pr.gov.br',
-    'PE': 'https://www.sefaz.pe.gov.br',
     'PI': 'https://www.sefaz.pi.gov.br',
-    'RJ': 'https://www.fazenda.rj.gov.br',
     'RN': 'https://www.sefaz.rn.gov.br',
-    'RS': 'https://www.sefaz.rs.gov.br',
     'RO': 'https://www.sefaz.ro.gov.br',
     'RR': 'https://www.sefaz.rr.gov.br',
-    'SC': 'https://www.sefaz.sc.gov.br',
-    'SP': 'https://www.notafiscalpaulista.fazenda.sp.gov.br',
     'SE': 'https://www.sefaz.se.gov.br',
     'TO': 'https://www.sefaz.to.gov.br'
 }
 
+# ============================================
+# ROTA PRINCIPAL (NÚMERO 1 - Substitui a antiga)
+# ============================================
 @app.route('/')
 def index():
+    """Serve a página inicial index.html"""
     return send_from_directory(FRONTEND_DIR, 'index.html')
 
+# ============================================
+# ROTA PARA ARQUIVOS ESTÁTICOS (NÚMERO 3 - A que você pediu)
+# ============================================
+@app.route('/<path:filename>')
+def static_files(filename):
+    """Serve arquivos CSS, JS e imagens da pasta frontend"""
+    return send_from_directory(FRONTEND_DIR, filename)
+
+# ============================================
+# ROTAS DA API (permanecem iguais)
+# ============================================
 @app.route('/api/estoque', methods=['GET'])
 def get_estoque():
     return jsonify(estoque)
@@ -97,14 +108,12 @@ def sugerir_receitas():
     receitas = carregar_receitas()
     disponiveis = set(estoque.keys())
     
-    # Filtra receitas que usam apenas o que está disponível
     sugestoes = []
     for r in receitas:
         ingredientes_necessarios = set(r['ingredientes'])
         if ingredientes_necessarios.issubset(disponiveis):
             sugestoes.append(r)
     
-    # Ordena por número de ingredientes (mais simples primeiro)
     sugestoes.sort(key=lambda x: len(x['ingredientes']))
     
     return jsonify({
@@ -115,7 +124,6 @@ def sugerir_receitas():
 
 @app.route('/api/receitas/parciais', methods=['GET'])
 def sugerir_receitas_parciais():
-    """Sugere receitas que usam pelo menos 70% dos ingredientes disponíveis"""
     receitas = carregar_receitas()
     disponiveis = set(estoque.keys())
     
