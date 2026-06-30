@@ -1,33 +1,110 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-  <title>Minha Cozinha</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍳 Minha Cozinha - Culinária Inteligente</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-100 p-4">
-  <div class="max-w-md mx-auto">
-    <h1 class="text-2xl font-bold mb-4">🍳 Minha Cozinha</h1>
-    
-    <!-- Upload da nota -->
-    <input type="file" id="notaInput" accept=".pdf,.jpg,.png" class="mb-4">
-    <button onclick="lerNota()" class="bg-blue-500 text-white p-2 rounded">Adicionar ao Estoque</button>
-    
-    <!-- Estoque atual -->
-    <div id="estoque" class="mt-4 p-2 bg-white rounded shadow"></div>
-    
-    <!-- Sugestões -->
-    <button onclick="buscarReceitas()" class="bg-green-500 text-white p-2 rounded mt-4">O que posso fazer?</button>
-    <div id="receitas" class="mt-4"></div>
-    
-    <!-- Créditos ICMS -->
-    <div class="mt-8 p-4 bg-yellow-100 rounded">
-      <select id="estadoSelect" class="p-2 border rounded">
-        <option value="SP">São Paulo</option>
-        <option value="RJ">Rio de Janeiro</option>
-      </select>
-      <button onclick="redirecionarICMS()" class="bg-purple-500 text-white p-2 rounded ml-2">Ver meus créditos</button>
+<body class="bg-gradient-to-b from-amber-50 to-orange-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-2xl">
+        <!-- Cabeçalho -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-orange-700">🍳 Minha Cozinha</h1>
+            <p class="text-gray-600 mt-2">Organize seus ingredientes e descubra receitas incríveis!</p>
+        </div>
+
+        <!-- Card Principal -->
+        <div class="bg-white rounded-2xl shadow-xl p-6 mb-6">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">📦 Meu Estoque</h2>
+            
+            <!-- Upload da Nota -->
+            <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center mb-4 hover:border-orange-400 transition">
+                <input type="file" id="notaInput" accept=".pdf,.jpg,.jpeg,.png" class="hidden">
+                <label for="notaInput" class="cursor-pointer block">
+                    <span class="text-4xl">📄</span>
+                    <p class="text-gray-600 mt-2">Clique para enviar sua nota fiscal</p>
+                    <p class="text-sm text-gray-400">PDF, JPG ou PNG</p>
+                </label>
+                <button onclick="processarNota()" class="mt-4 bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-6 rounded-full transition">
+                    Adicionar ao Estoque
+                </button>
+            </div>
+
+            <!-- Estoque Atual -->
+            <div class="bg-gray-50 rounded-lg p-4">
+                <div class="flex justify-between items-center mb-3">
+                    <span class="font-medium text-gray-700">Itens no estoque:</span>
+                    <button onclick="limparEstoque()" class="text-red-500 text-sm hover:text-red-700">🗑️ Limpar tudo</button>
+                </div>
+                <div id="estoqueList" class="flex flex-wrap gap-2 min-h-[40px]">
+                    <span class="text-gray-400 text-sm">Nenhum item ainda. Adicione sua primeira nota!</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Receitas -->
+        <div class="bg-white rounded-2xl shadow-xl p-6 mb-6">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-semibold text-gray-800">🍽️ Receitas Sugeridas</h2>
+                <button onclick="buscarReceitas()" class="bg-green-500 hover:bg-green-600 text-white text-sm font-medium py-2 px-4 rounded-full transition">
+                    🔄 Atualizar
+                </button>
+            </div>
+            <div id="receitasList" class="space-y-3">
+                <p class="text-gray-400 text-center text-sm">Adicione ingredientes para ver receitas!</p>
+            </div>
+        </div>
+
+        <!-- Créditos ICMS -->
+        <div class="bg-white rounded-2xl shadow-xl p-6">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">💰 Créditos de ICMS</h2>
+            <p class="text-sm text-gray-600 mb-3">Selecione seu estado para ser redirecionado ao site oficial:</p>
+            
+            <div class="flex flex-col sm:flex-row gap-3">
+                <select id="estadoSelect" class="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400">
+                    <option value="">Selecione seu estado...</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PR">Paraná</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="BA">Bahia</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="GO">Goiás</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="PA">Pará</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                </select>
+                <button onclick="redirecionarICMS()" class="bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-6 rounded-lg transition whitespace-nowrap">
+                    🔗 Ir para o site
+                </button>
+            </div>
+            <p class="text-xs text-gray-400 mt-3">Você será redirecionado para o programa oficial de créditos do seu estado.</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center text-gray-400 text-sm mt-8">
+            Feito com ❤️ - Organize sua cozinha de forma inteligente
+        </div>
     </div>
-  </div>
-  <script src="script.js"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>
