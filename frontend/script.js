@@ -1,7 +1,7 @@
 // Configuração da API
 const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
     ? 'http://localhost:5000/api'
-    : 'https://seu-app.onrender.com/api';  // <-- MUDE PARA SUA URL DO RENDER DEPOIS
+    : 'https://bento-cozinha.onrender.com';  // <-- MUDE PARA SUA URL DO RENDER DEPOIS
 
 // ============================================
 // 1. FUNÇÕES DO ESTOQUE
