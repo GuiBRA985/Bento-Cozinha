@@ -4,6 +4,13 @@ import json
 import os
 from datetime import datetime
 
+from flask import send_from_directory
+import os
+
+# Pega o diretório raiz do projeto
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+FRONTEND_DIR = os.path.join(BASE_DIR, 'frontend')
+
 app = Flask(__name__)
 CORS(app)
 
