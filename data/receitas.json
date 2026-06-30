@@ -1,14 +1,122 @@
 [
   {
-    "nome": "Arroz com Ovo",
-    "ingredientes": ["arroz", "ovo", "sal", "alho"],
-    "modo_preparo": "Cozinhe o arroz, frite o ovo e misture.",
-    "tempo": 15
+    "nome": "Arroz Simples",
+    "ingredientes": ["arroz", "sal", "alho"],
+    "modo_preparo": "Refogue o alho, adicione o arroz, água e sal. Cozinhe até secar.",
+    "tempo": 20
+  },
+  {
+    "nome": "Ovo Frito",
+    "ingredientes": ["ovo", "sal", "oleo"],
+    "modo_preparo": "Aqueça o óleo, quebre o ovo na frigideira, tempere com sal e frite até a borda ficar crocante.",
+    "tempo": 5
   },
   {
     "nome": "Macarrão com Molho de Tomate",
-    "ingredientes": ["macarrão", "tomate", "alho", "cebola", "sal"],
-    "modo_preparo": "Cozinhe o macarrão, refogue o molho e misture.",
+    "ingredientes": ["macarrao", "tomate", "alho", "cebola", "sal", "oleo"],
+    "modo_preparo": "Cozinhe o macarrão. Refogue cebola e alho, adicione tomate, cozinhe e misture com o macarrão.",
     "tempo": 25
+  },
+  {
+    "nome": "Salada de Tomate com Cebola",
+    "ingredientes": ["tomate", "cebola", "sal", "oleo"],
+    "modo_preparo": "Corte tomate e cebola em rodelas, tempere com sal e óleo.",
+    "tempo": 10
+  },
+  {
+    "nome": "Omelete Simples",
+    "ingredientes": ["ovo", "sal", "oleo"],
+    "modo_preparo": "Bata os ovos com sal, despeje na frigideira com óleo quente, cozinhe dos dois lados.",
+    "tempo": 10
+  },
+  {
+    "nome": "Arroz com Ovo",
+    "ingredientes": ["arroz", "ovo", "sal", "alho", "oleo"],
+    "modo_preparo": "Prepare o arroz. Frite o ovo e misture ao arroz.",
+    "tempo": 20
+  },
+  {
+    "nome": "Sopa de Legumes",
+    "ingredientes": ["batata", "cenoura", "cebola", "alho", "sal", "agua"],
+    "modo_preparo": "Corte legumes em cubos, refogue cebola e alho, adicione água e legumes, cozinhe até amolecer.",
+    "tempo": 35
+  },
+  {
+    "nome": "Pão com Ovo",
+    "ingredientes": ["pao", "ovo", "sal", "oleo"],
+    "modo_preparo": "Frite o ovo e coloque entre duas fatias de pão.",
+    "tempo": 5
+  },
+  {
+    "nome": "Manteiga na Frigideira",
+    "ingredientes": ["pao", "manteiga"],
+    "modo_preparo": "Passe manteiga no pão e toste na frigideira.",
+    "tempo": 5
+  },
+  {
+    "nome": "Café da Manhã Completo",
+    "ingredientes": ["pao", "manteiga", "cafe", "leite", "acucar"],
+    "modo_preparo": "Prepare o café, aqueça o leite, torre o pão com manteiga.",
+    "tempo": 10
+  },
+  {
+    "nome": "Suco Natural",
+    "ingredientes": ["agua", "acucar"],
+    "modo_preparo": "Misture água e açúcar, adicione gelo se desejar.",
+    "tempo": 2
+  },
+  {
+    "nome": "Feijão Simples",
+    "ingredientes": ["feijao", "sal", "alho", "cebola", "agua"],
+    "modo_preparo": "Deixe o feijão de molho, cozinhe com água, sal, alho e cebola.",
+    "tempo": 60
+  },
+  {
+    "nome": "Carne Grelhada",
+    "ingredientes": ["carne", "sal"],
+    "modo_preparo": "Tempere a carne com sal e grelhe na frigideira ou churrasqueira.",
+    "tempo": 15
+  },
+  {
+    "nome": "Frango Grelhado",
+    "ingredientes": ["frango", "sal", "alho"],
+    "modo_preparo": "Tempere o frango com sal e alho, grelhe até dourar.",
+    "tempo": 20
+  },
+  {
+    "nome": "Batata Frita",
+    "ingredientes": ["batata", "sal", "oleo"],
+    "modo_preparo": "Corte a batata em palitos, frite em óleo quente até dourar, escorra e tempere com sal.",
+    "tempo": 20
+  },
+  {
+    "nome": "Salada de Alface e Tomate",
+    "ingredientes": ["alface", "tomate", "sal", "oleo"],
+    "modo_preparo": "Lave as folhas de alface e o tomate, corte e tempere com sal e óleo.",
+    "tempo": 10
+  },
+  {
+    "nome": "Vitamina de Leite",
+    "ingredientes": ["leite", "acucar"],
+    "modo_preparo": "Bata o leite com açúcar no liquidificador.",
+    "tempo": 3
+  },
+  {
+    "nome": "Café Preto",
+    "ingredientes": ["cafe", "agua", "acucar"],
+    "modo_preparo": "Prepare o café coado e adoce a gosto.",
+    "tempo": 5
+  },
+  {
+    "nome": "Arroz de Forno",
+    "ingredientes": ["arroz", "ovo", "queijo", "presunto", "sal", "leite"],
+    "modo_preparo": "Misture o arroz cozido com ovos, queijo, presunto e leite. Leve ao forno até gratinar.",
+    "tempo": 30
+  },
+  {
+    "nome": "Macarrão com Ovo",
+    "ingredientes": ["macarrao", "ovo", "sal", "oleo", "alho"],
+    "modo_preparo": "Cozinhe o macarrão. Refogue alho, adicione o macarrão e o ovo batido, mexa até cozinhar.",
+    "tempo": 20
   }
 ]
