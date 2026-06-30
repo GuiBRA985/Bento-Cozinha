@@ -1,0 +1,14 @@
+[
+  {
+    "nome": "Arroz com Ovo",
+    "ingredientes": ["arroz", "ovo", "sal", "alho"],
+    "modo_preparo": "Cozinhe o arroz, frite o ovo e misture.",
+    "tempo": 15
+  },
+  {
+    "nome": "Macarrão com Molho de Tomate",
+    "ingredientes": ["macarrão", "tomate", "alho", "cebola", "sal"],
+    "modo_preparo": "Cozinhe o macarrão, refogue o molho e misture.",
+    "tempo": 25
+  }
+]
