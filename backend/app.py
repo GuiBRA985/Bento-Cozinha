@@ -56,8 +56,8 @@ LINKS_ICMS = {
 }
 
 @app.route('/')
-def home():
-    return jsonify({'message': 'API da Cozinha Inteligente funcionando!'})
+def index():
+    return send_from_directory(FRONTEND_DIR, 'index.html')
 
 @app.route('/api/estoque', methods=['GET'])
 def get_estoque():
